@@ -1,0 +1,19 @@
+<form class="artistform" name="artistForm">
+	<div class="formgroup">
+		<label>Name (required) </label>
+		<input type="text" name="name" ng-model="newArtist.name" ng-required="true">
+	</div>
+    <div class="formgroup">
+		<label>Reknown (required) </label>
+		<input type="text" name="reknown" ng-model="newArtist.reknown" ng-required="true">
+	</div>
+    <div class="formgroup">
+		<label>Bio</label>
+		<textarea name="Text1" cols="40" rows="5" ng-model="newArtist.bio"></textarea>
+	</div>
+	<p ng-show="!artistForm.name.$dirty">Need Name</p>
+	<p ng-show="!artistForm.reknown.$dirty">Need Reknown</p>
+    <div class="formgroup">
+        <button class="save btn" ng-disabled="artistForm.$invalid" ng-click="update(newArtist)">Save</button>
+	</div>
+</form>

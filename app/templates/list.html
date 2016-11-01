@@ -1,0 +1,20 @@
+<div class="search">
+	<h1>Find Artist</h1>
+	<input type="text" ng-model="searchTerm">
+</div>
+
+<div>
+	<ul class="artistlist">
+		<li class="artist cf" ng-repeat="artist in artists | filter: searchTerm">
+			<a href="#/detail/{{artists.indexOf(artist)}}">
+				<img ng-src="images/sample_added_artist.jpg" alt="Photo of {{artist.name}}">
+				<h3>{{artist.name}}</h3>
+				<p>{{artist.reknown}}</p>
+			</a>
+		</li>
+	</ul>
+</div>
+
+<div class="add-artist">
+    <a class="btn" href="#/addArtist">Add New Artist</a>
+</div>

@@ -1,4 +1,4 @@
-# Artist Board
+# Artist List
 
 Angular 1.5 based application that allow user to find artists from a list or add new artists.
 
@@ -26,3 +26,9 @@ Server and test framwork come from [here](https://docs.angularjs.org/tutorial).
 ### TODO
 
 * Tests
+
+### Sample Image
+
+![alt sample image](https://github.com/yukicode/Artist-List/blob/master/readme-image/sample%2001.jpg?raw=true)
+
+![alt sample image 02](https://github.com/yukicode/Artist-List/blob/master/readme-image/sample%2002.jpg?raw=true)

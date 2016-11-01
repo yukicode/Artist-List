@@ -4,7 +4,9 @@ Angular 1.5 based application that allow user to find artists from a list or add
 
 The outline of the application is based on [this tutorial](https://github.com/planetoftheweb/angular).
 
-CSS and artist data come are copied and partically modified, view and controller and implemented on my own. Added a new feature to add artists.
+CSS and artist data come are copied and partically modified, view and controller and implemented on my own. 
+Added a new feature to add artists.
+Source code can be viewed in `/app`.
 
 Server and test framwork come from [here](https://docs.angularjs.org/tutorial).
 

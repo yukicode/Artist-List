@@ -1,56 +1,57 @@
 var artistControllers = angular.module('artistControllers', []);
 
 //sharing artists data across all controllers and views
-artistControllers.factory('Data', function () {
-  return { artists: [] };
+artistControllers.factory('Data', function ($http) {
+  return {
+    artists: [],
+    getData: function () {
+      return $http.get('js/data.json');
+    }
+  };
 });
 
-artistControllers.controller('artistListCtrl', function ($http, $scope, Data) {
+artistControllers.controller('artistListCtrl', function ($scope, Data) {
   //use shared artist data
   //fetch data for saved file if the data doesn't exist
   if (Data.artists.length > 0) {
     $scope.artists = Data.artists;
   } else {
-    $http.get('js/data.json')
-    .then(function success(response) {
-      Data.artists = response.data;
-      $scope.artists = response.data;
-    }, function fail(response){
-      console.log(response.statustext);
-    });
+    Data.getData().
+      then(function success(response) {
+        Data.artists = response.data;
+        $scope.artists = Data.artists;
+      }, function fail(response) {
+        console.log(response.statustext);
+      });
   }
 });
 
-artistControllers.controller('artistDetailCtrl', function ($http, $scope, Data, $routeParams) {
+artistControllers.controller('artistDetailCtrl', function ($scope, Data, $routeParams) {
   $scope.artistIndex = $routeParams.artistId;
-  //use shared artist data
-  //fetch data for saved file if the data doesn't exist
   if (Data.artists.length > 0) {
     $scope.artists = Data.artists;
   } else {
-    $http.get('js/data.json')
-    .then(function success(response) {
-      Data.artists = response.data;
-      $scope.artists = response.data;
-    }, function fail(response){
-      console.log(response.statustext);
-    });
+    Data.getData()
+      .then(function success(response) {
+        Data.artists = response.data;
+        $scope.artists = Data.artists;
+      }, function fail(response) {
+        console.log(response.statustext);
+      });
   }
 });
 
-artistControllers.controller('addArtistCtrl', function ($http, $scope, Data, $window) {
-  //use shared artist data
-  //fetch data for saved file if the data doesn't exist
+artistControllers.controller('addArtistCtrl', function ($scope, Data, $window) {
   if (Data.artists.length > 0) {
     $scope.artists = Data.artists;
   } else {
-    $http.get('js/data.json')
-    .then(function success(response) {
-      Data.artists = response.data;
-      $scope.artists = response.data;
-    }, function fail(response){
-      console.log(response.statustext);
-    });
+    Data.getData()
+      .then(function success(response) {
+        Data.artists = response.data;
+        $scope.artists = response.data;
+      }, function fail(response) {
+        console.log(response.statustext);
+      });
   }
 
   //update artists list and redirect to list page
@@ -66,7 +67,7 @@ artistControllers.controller('addArtistCtrl', function ($http, $scope, Data, $wi
 
   //format string so that the first letter of each word is upper case
   var formatString = function (name) {
-    if(!name){
+    if (!name) {
       return name;
     }
     var formatted = "";
